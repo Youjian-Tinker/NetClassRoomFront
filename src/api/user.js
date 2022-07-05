@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function login(data) {
   return request({
-    url: '/admin/vod/user/login',
+    url: '/vod/user/login',
     method: 'post',
     data
   })
@@ -10,7 +10,7 @@ export function login(data) {
 
 export function getInfo(token) {
   return request({
-    url: '/admin/vod/user/info',
+    url: '/vod/user/info',
     method: 'get',
     params: { token }
   })

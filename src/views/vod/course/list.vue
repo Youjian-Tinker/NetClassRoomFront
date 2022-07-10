@@ -204,7 +204,21 @@ export default {
     },
 
     add() {
-      this.$router.push({ path: '/vod/course/info' })
+      this.$router.push({ path: '/vodcourse/course/info' })
+    },
+
+    // 根据id删除数据
+    removeById(id) {
+      this.$confirm('此操作将永久删除该课程，以及该课程下的章节和视频，是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        return courseApi.removeById(id)
+      }).then(response => {
+        this.fetchData()
+        this.$message.success(response.message)
+      })
     },
 
     // 每页记录数改变，size：回调参数，表示当前选中的“每页条数”

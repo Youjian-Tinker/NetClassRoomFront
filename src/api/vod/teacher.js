@@ -43,5 +43,11 @@ export default {
             method: 'delete',
             data: idList
         })
-    }
+    },
+    list() {
+        return request({
+            url: `${api_name}/findAll`,
+            method: 'get'
+        }) 
+    },
 }

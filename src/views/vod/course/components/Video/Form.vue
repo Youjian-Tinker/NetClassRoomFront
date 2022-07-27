@@ -46,8 +46,10 @@
 </template>
 
 <script>
+
 import videoApi from '@/api/vod/video'
-//import vodApi from '@/api/vod/vod'
+import vodApi from '@/api/vod/vod'
+
 export default {
 
   data() {
@@ -148,7 +150,7 @@ export default {
 
     // 删除视频文件确认
     handleBeforeRemove(file, fileList) {
-      return this.$confirm(`确定移除 ${file.name}？`)
+      return this.$confirm(`确定移除 ${file.name}?`)
     },
 
     // 执行视频文件的删除
@@ -156,6 +158,12 @@ export default {
       if (!this.video.videoSourceId) {
         return
       }
+      vodApi.removeByVodId(this.video.videoSourceId).then(response => {
+        this.video.videoSourceId = ''
+        this.video.videoOriginalName = ''
+        videoApi.updateById(this.video)
+        this.$message.success(response.message)
+      })
     }
   }
 }

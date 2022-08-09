@@ -238,7 +238,7 @@ export const constantRoutes = [
       }
     ]
   },
- // 营销
+  // 营销
   {
     path: '/activity',
     component: Layout,
@@ -273,6 +273,26 @@ export const constantRoutes = [
         component: () => import('@/views/activity/couponInfo/show'),
         meta: { title: '详情', noCache: true },
         hidden: true
+      }
+    ]
+  },
+  // 公众号菜单
+  {
+    path: '/wechat',
+    component: Layout,
+    redirect: '/wechat/menu/list',
+    name: 'Wechat',
+    meta: {
+      title: '菜单管理',
+      icon: 'el-icon-refrigerator'
+    },
+    alwaysShow: true,
+    children: [
+      {
+        path: 'menu/list',
+        name: 'Menu',
+        component: () => import('@/views/wechat/menu/list'),
+        meta: { title: '菜单列表' }
       }
     ]
   },

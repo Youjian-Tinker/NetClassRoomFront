@@ -145,7 +145,7 @@ export default {
     // 失败回调
     handleUploadError() {
       this.uploadBtnDisabled = false
-      this.$message.error('上传失败2')
+      this.$message.error('上传失败')
     },
 
     // 删除视频文件确认
